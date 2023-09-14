@@ -13,7 +13,7 @@ namespace CinemaTicketsWebApi.DataAccess
 
         public DbSet<Showtime> Showtimes { get; set; }
 
-        public DbSet<ShowtimeSeat> ShowtimeSeats { get; set;}
+        public DbSet<Ticket> Tickets { get; set;}
 
         public DbSet<Theater> Theaters { get; set; }
 

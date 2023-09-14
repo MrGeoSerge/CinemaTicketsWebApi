@@ -83,7 +83,7 @@ namespace CinemaTicketsWebApi.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}", Name = "DeleteMovie")]
-        [ProducesResponseType(typeof(Movie), 200)]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [SwaggerOperation(OperationId = "DeleteMovie", Description = "Deletes the movie")]
         public async Task<IActionResult> DeleteProduct(int id)

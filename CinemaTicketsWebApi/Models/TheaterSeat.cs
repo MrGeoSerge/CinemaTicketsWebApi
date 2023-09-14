@@ -6,13 +6,16 @@ namespace CinemaTicketsWebApi.Models
 {
     public class TheaterSeat
     {
+        /// <example>1</example>
         [Key]
         public int Id { get; set; }
 
-        public string Label { get; set; }
+        //For simplification we will use string representation of seat location
+        /// <example>Row 1 Place 35</example>
+        [Required]
+        public string Location { get; set; }
 
-        public SeatPricingCategory Category { get; set; }
-
+        /// <example>1</example>
         [ForeignKey("Theater")]
         public int TheaterId { get; set; }
 

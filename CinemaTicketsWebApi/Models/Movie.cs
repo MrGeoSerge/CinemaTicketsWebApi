@@ -5,6 +5,7 @@ namespace CinemaTicketsWebApi.Models
 {
     public class Movie
     {
+        /// <example>1</example>
         [Key]
         public int Id { get; set; }
 
