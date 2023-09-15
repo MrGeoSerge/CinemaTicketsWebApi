@@ -21,11 +21,11 @@ namespace CinemaTicketsWebApi.Controllers
         /// <summary>
         /// Gets all seats in the system
         /// </summary>
-        /// <returns>Get All Showtimes</returns>
-        [HttpGet("GetAvailableTickets/{showtimeId}", Name = "GetAvailableTickets")]
+        /// <returns>Get All available tickets for showtime</returns>
+        [HttpGet("GetAvailableTickets/{showtimeId}", Name = "Get Available Tickets")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(IEnumerable<Showtime>), 200)]
-        [SwaggerOperation(OperationId = "GetAllShowtimes", Description = "Provides list of all tickets to specific showtime")]
+        [SwaggerOperation(OperationId = "GetAvailableTicketsForShowtime", Description = "Provides list of avilable tickets to specific showtime")]
         public async Task<IActionResult> GetAvailableTicketsForShowtime(int showtimeId)
         {
             var result = await _bookingService.GetAvailableTickets(showtimeId);
@@ -40,7 +40,7 @@ namespace CinemaTicketsWebApi.Controllers
         [Produces("application/json")]
         [ProducesResponseType(typeof(IEnumerable<Showtime>), 200)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        [SwaggerOperation(OperationId = "ReserveTicket", Description = "Reserve ticket")]
+        [SwaggerOperation(OperationId = "ReserveTickets", Description = "Reserve tickets")]
         public async Task<IActionResult> ReserveTickets(ReservationRequest reservationRequest)
         {
             var result = await _bookingService.ReserveTickets(reservationRequest);
@@ -51,11 +51,11 @@ namespace CinemaTicketsWebApi.Controllers
         /// Completes booking. Returns confirmed reservation of tickets
         /// </summary>
         /// <returns>Reservation Completed</returns>
-        [HttpPatch("confirmReservation/{reservationId}", Name = "ReserveTicket")]
+        [HttpPatch("CompleteReservation/{reservationId}", Name = "ReserveTicket")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(IEnumerable<Showtime>), 200)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        [SwaggerOperation(OperationId = "ReserveTicket", Description = "Reserve ticket")]
+        [SwaggerOperation(OperationId = "CompleteReservation", Description = "Completes the reservation")]
         public async Task<IActionResult> CompleteReservation(int reservationId)
         {
             var result = await _bookingService.CompleteReservation(reservationId);

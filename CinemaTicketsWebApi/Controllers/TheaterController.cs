@@ -86,7 +86,7 @@ namespace CinemaTicketsWebApi.Controllers
         [HttpDelete("{id}", Name = "DeleteTheater")]
         [ProducesResponseType(typeof(Theater), 200)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        [SwaggerOperation(OperationId = "UpdateTheater", Description = "Updates the theater info")]
+        [SwaggerOperation(OperationId = "DeleteTheater", Description = "Updates the theater info")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
             await _theaterService.DeleteTheater(id);
