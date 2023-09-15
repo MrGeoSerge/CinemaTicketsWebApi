@@ -1,6 +1,7 @@
 ﻿using CinemaTicketsWebApi.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace CinemaTicketsWebApi.Models
 {
@@ -19,6 +20,7 @@ namespace CinemaTicketsWebApi.Models
         [ForeignKey("Theater")]
         public int TheaterId { get; set; }
 
-        public virtual Theater Theater { get; set; }
+        [JsonIgnore]
+        public virtual Theater? Theater { get; set; }
     }
 }

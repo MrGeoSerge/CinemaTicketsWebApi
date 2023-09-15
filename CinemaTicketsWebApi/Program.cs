@@ -10,6 +10,7 @@ using System.Net;
 using CinemaTicketsWebApi.Exceptions;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
 namespace CinemaTicketsWebApi
 {
@@ -66,15 +67,24 @@ namespace CinemaTicketsWebApi
             services.AddDbContext<CinemaTicketBookingDbContext>(options
                 => options.UseInMemoryDatabase(databaseName: "CinemaTicketBooking"));
 
+            services
+                .AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                  {
+                      options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                      options.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+                  });
+
             services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IReservationRepository, ReservationRepository>();
             services.AddScoped<IShowtimeRepository, ShowtimeRepository>();
             services.AddScoped<ITheaterRepository, TheaterRepository>();
-            //services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ITicketsRepository, TicketsRepository>();
 
+            services.AddScoped<IBookingService, BookingService>();
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<IShowtimeService, ShowtimeService>();
             services.AddScoped<ITheaterService, TheaterService>();
-            //services.AddScoped<ICategoryRepository, CategoryRepository>();
         }
 
     }

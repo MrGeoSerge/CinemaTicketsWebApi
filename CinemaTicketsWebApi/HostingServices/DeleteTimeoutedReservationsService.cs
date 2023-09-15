@@ -3,6 +3,9 @@ using System.Threading;
 
 namespace CinemaTicketsWebApi.HostingServices
 {
+    //Hosted service is good for scalability when we have multiple instances
+    //We can use redlock to limit service running only on one instanse at a time
+    //It is very reliable even if service will be shut down for a while
     public class DeleteTimeoutedReservationsService : IHostedService
     {
         private CancellationTokenSource _cancellationTokenSource;

@@ -17,6 +17,10 @@ namespace CinemaTicketsWebApi.Controllers
             _theaterService = theaterService;
         }
 
+        /// <summary>
+        /// Gets all theaters in the system
+        /// </summary>
+        /// <returns>Get All Theaters</returns>
         [HttpGet(Name = "GetAllTheaters")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(IEnumerable<Theater>), 200)]
@@ -28,6 +32,11 @@ namespace CinemaTicketsWebApi.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Gets a Theater
+        /// </summary>
+        /// <param name="theateId"></param>
+        /// <returns>Theate by Id</returns>
         [HttpGet("{id}", Name = "GetTheaterById")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(Theater), 200)]
@@ -39,6 +48,11 @@ namespace CinemaTicketsWebApi.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Creates a Theater
+        /// </summary>
+        /// <param name="theater"></param>
+        /// <returns>A newly created Theater</returns>
         [HttpPost(Name = "AddNewTheater")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(Theater), 200)]
@@ -49,6 +63,11 @@ namespace CinemaTicketsWebApi.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Updates a Theater
+        /// </summary>
+        /// <param name="theater"></param>
+        /// <returns>A newly updated Theater</returns>
         [HttpPut(Name = "UpdateTheater")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(Theater), 200)]
@@ -59,6 +78,11 @@ namespace CinemaTicketsWebApi.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Deletes a specific theater.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}", Name = "DeleteTheater")]
         [ProducesResponseType(typeof(Theater), 200)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]

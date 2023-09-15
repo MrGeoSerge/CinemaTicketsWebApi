@@ -3,6 +3,7 @@ using CinemaTicketsWebApi.Models;
 using CinemaTicketsWebApi.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Net;
 
 namespace CinemaTicketsWebApi.Controllers
 {
@@ -38,6 +39,7 @@ namespace CinemaTicketsWebApi.Controllers
         [HttpPost("ReserveTickets", Name = "ReserveTickets")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(IEnumerable<Showtime>), 200)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [SwaggerOperation(OperationId = "ReserveTicket", Description = "Reserve ticket")]
         public async Task<IActionResult> ReserveTickets(ReservationRequest reservationRequest)
         {
@@ -52,16 +54,12 @@ namespace CinemaTicketsWebApi.Controllers
         [HttpPatch("confirmReservation/{reservationId}", Name = "ReserveTicket")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(IEnumerable<Showtime>), 200)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [SwaggerOperation(OperationId = "ReserveTicket", Description = "Reserve ticket")]
         public async Task<IActionResult> CompleteReservation(int reservationId)
         {
             var result = await _bookingService.CompleteReservation(reservationId);
             return Ok(result);
         }
-
-
-
-
-
     }
 }

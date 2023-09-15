@@ -24,19 +24,19 @@ namespace CinemaTicketsWebApi.Models
         [ForeignKey("TheaterSeat")]
         public int TheaterSeatId { get; set; }
 
-        public virtual TheaterSeat TheaterSeat { get; set; }
+        public virtual TheaterSeat? TheaterSeat { get; set; }
 
         /// <example>1</example>
         [ForeignKey("Showtime")]
         public int ShowtimeId { get; set; }
 
-        public virtual Showtime Showtime { get; set; }
+        public virtual Showtime? Showtime { get; set; }
 
 
         [ForeignKey("Reservation")]
         public int? ReservationId { get; set; }
 
-        public virtual Reservation Reservation { get; set; }
+        public virtual Reservation? Reservation { get; set; }
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using CinemaTicketsWebApi.Dtos;
+using CinemaTicketsWebApi.Exceptions;
 using CinemaTicketsWebApi.Models;
 using CinemaTicketsWebApi.Repositories.Interfaces;
 using CinemaTicketsWebApi.Services.Interfaces;
@@ -26,6 +27,11 @@ namespace CinemaTicketsWebApi.Services
         public async Task<Reservation> ReserveTickets(ReservationRequest reservationRequest)
         {
             var tickets = await _ticketsRepository.GetTicketsByIds(reservationRequest.TicketIds);
+
+            if (!tickets.Any())
+            {
+                throw new ItemNotFoundException($"Tickets were not found");
+            }
 
             var reservation = new Reservation();
             reservation.Tickets = tickets;

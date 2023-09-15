@@ -22,7 +22,7 @@ namespace CinemaTicketsWebApi.Models
         [ForeignKey("Theater")]
         public int TheaterId { get; set; }
 
-        public virtual Theater Theater { get; set; }
+        public virtual Theater? Theater { get; set; }
 
         public List<Ticket> Tickets { get; set; }
     }
