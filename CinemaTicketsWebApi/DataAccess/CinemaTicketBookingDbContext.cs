@@ -11,6 +11,8 @@ namespace CinemaTicketsWebApi.DataAccess
 
         public DbSet<Movie> Movies { get; set; }
 
+        public DbSet<Reservation> Reservations { get; set; }
+
         public DbSet<Showtime> Showtimes { get; set; }
 
         public DbSet<Ticket> Tickets { get; set;}

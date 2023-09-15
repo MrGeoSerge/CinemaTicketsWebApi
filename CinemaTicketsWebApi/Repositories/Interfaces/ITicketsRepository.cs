@@ -4,10 +4,14 @@ namespace CinemaTicketsWebApi.Repositories.Interfaces
 {
     public interface ITicketsRepository
     {
-        public Task<IEnumerable<Ticket>> GetAvailableTicketsForShowtime(int showtimeId);
+        Task<IEnumerable<Ticket>> GetAvailableTicketsForShowtime(int showtimeId);
 
-        public Task<bool> RemoveReservationFromTickets(IEnumerable<int> ticketsId);
+        Task<IEnumerable<Ticket>> GetTicketsByIds(IEnumerable<int> ticketsId);
 
-        public Task<List<Ticket>> CompleteReservation(IEnumerable<int> ticketIds);
+        Task<bool> ReserveTickets(IEnumerable<int> ticketsIds);
+
+        Task<bool> RemoveReservationFromTickets(IEnumerable<int> ticketsId);
+
+        Task<bool> MarkTicketsAsSold(IEnumerable<int> ticketIds);
     }
 }

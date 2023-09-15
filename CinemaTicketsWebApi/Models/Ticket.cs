@@ -34,8 +34,9 @@ namespace CinemaTicketsWebApi.Models
 
 
         [ForeignKey("Reservation")]
-        public int ReservationId { get; set; }
+        public int? ReservationId { get; set; }
 
+        public virtual Reservation Reservation { get; set; }
 
     }
 }
